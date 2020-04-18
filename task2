@@ -1,0 +1,42 @@
+#TASK1
+#Write a python code to create 100 containers that will be running after the system will be reboot
+#--------------------------------------------------------------------------------------------------
+import os
+for num in range(1,101):
+	if(num<=25):
+		os.system("sudo docker run -itd --restart unless -stped --name adhoc{} alpine".formate(num))
+elif num<=50:
+	os.system("sudo docker run -itd --restart unless -stped --name adhoc{} alpine".formate(num))
+elif num<=75:
+	os.system("sudo docker run -itd --restart unless -stped --name adhoc{} alpine".formate(num))
+elif num<=100:
+	os.system("sudo docker run -itd --restart unless -stped --name adhoc{} alpine".formate(num))
+os.system("sudo docker ps")
+
+
+#TASK2
+#Write a code to get the list of name created of all container and store them in a file
+#---------------------------------------------------------------------------------------
+docker ps --format "table{{.Names}}/t{{.CreatedAt}}" > output.txt
+
+
+
+#Task3
+#Create a custom docker image containing firefox as a parent image.
+#-------------------------------------------------------------------
+from ubuntu
+run apt-get install firefox
+run groupadd -f  100 x
+run useradd -d /home/x -s /bin/bash -m x -u 100 -g 100
+user x
+env x /home/x
+cmd /usr/bin/firefox
+
+
+
+docker build -t x
+
+#Task4
+#Store details in a file
+#-----------------------
+docker start -all -no-stream --format "table{{.Name}}/t{{>CPU}}/t{{>Memusage}}/t{{.Memperc}}">file.txt
